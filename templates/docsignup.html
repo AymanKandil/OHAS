@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OHAS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="../static/img/Logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-item input-group">
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" />
+                                    <label class="form-label" for="form1">Search</label>
+                                </div>
+                                <button type="button" class="btn btn-secondary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="diseaseslist.html">List of Diseases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogsforums.html">Blogs & Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="docsignup.html">Be a Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Be a Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Sign-in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Body -->
+
+<body>
+    <!--Sign Up Form-->
+    <div class="signup-form">
+        <form>
+            <h2>Sign Up</h2>
+            <p class="hint-text text-center">Your Health Journey Starts Here!</p>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+                    <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col"><input type="text" class="form-control" name="gender" placeholder="Gender" required="required"></div>
+                    <div class="col"><input type="number" class="form-control" name="age" placeholder="Age" required="required"></div>
+                </div>
+                &nbsp;
+                <div class="row">
+                    <label for="exampleFormControlTextarea3">Please List Your Previous Workplaces</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" required="required"></textarea>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Please Attach Your Medical Certification</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" required="required">
+                    </div>
+                </form>
+        </form>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-light btn-lg btn-block">Register Now</button>
+        </div>
+        </form>
+        <div class="text-center">Already have an account? <a href="login.html">Sign in</a></div>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../static/img/Logo.png" width="60" height="58">
+                <hr class="light">
+                <a href="login.html">
+                    <p>Blogs & Forums</p>
+                </a>
+                <a href="diseases-list.html">
+                    <p>List of Diseases</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Social Media</h5>
+                <hr class="light">
+                <p>Facebook page</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Company</h5>
+                <hr class="light">
+                <a href="aboutus.html">
+                    <p>About Us</p>
+                </a>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>&copy; OHAS.com</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OHAS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-lidght sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="../static/img/Logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-item input-group">
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" />
+                                    <label class="form-label" for="form1">Search</label>
+                                </div>
+                                <button type="button" class="btn btn-secondary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="diseaseslist.html">List of Diseases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogsforums.html">Blogs & Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="docsignup.html">Be a Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Be a Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Sign-in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<body>
+    <div class="header">
+        <h2>&nbsp;&nbsp;&nbsp;Blogs & Forums</h2>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#farmModal">+ Add Blog</button>
+    </div>
+    <!--blogs and forums-->
+    <div class="modal fade" id="farmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Blog</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="blog-name" placeholder="Blog Name" required="required">
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="blog-title" placeholder="Blog Title" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="date" placeholder="Date" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="blog-author" placeholder="Blog Author" required="required">
+                        </div>
+                        <div class="row">
+                            <label for="exampleFormControlTextarea3">Write Your Blog Here</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>COVID-19</h2>
+                <h5>Cov-Sars-19, Dec 7, 2020</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.</p>
+                <p>Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.</p>
+                <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+            </div>
+            <div class="card">
+                <h2>EBOLA</h2>
+                <h5>Ebola virus, Sep 2, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Ebola, also known as Ebola virus disease (EVD) is a viral hemorrhagic fever of humans and other primates caused by ebolaviruses.</p>
+                <p>Signs and symptoms typically start between two days and three weeks after contracting the virus with a fever, sore throat, muscular pain, and headaches.</p>
+                <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<!--- Footer -->
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../static/img/Logo.png" width="60" height="58">
+                <hr class="light">
+                <a href="login.html">
+                    <p>Blogs & Forums</p>
+                </a>
+                <a href="diseases-list.html">
+                    <p>List of Diseases</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Social Media</h5>
+                <hr class="light">
+                <p>Facebook page</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Company</h5>
+                <hr class="light">
+                <a href="aboutus.html">
+                    <p>About Us</p>
+                </a>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>&copy; OHAS.com</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>

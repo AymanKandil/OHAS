@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OHAS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="../static/img/Logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-item input-group">
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" />
+                                    <label class="form-label" for="form1">Search</label>
+                                </div>
+                                <button type="button" class="btn btn-secondary">
+                                  <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="diseaseslist.html">List of Diseases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogsforums.html">Blogs & Forums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="docsignup.html">Be a Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Be a Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Sign-in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Body -->
+<h1>Viral Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#farmModal">+ Add Disease</button>
+        </div>
+
+        <!--Farm Modal-->
+        <div class="modal fade" id="farmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('farmportal.addfarm')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="cause" placeholder="Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="parts-of-body-affected" placeholder="Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="method-of-spreading" placeholder="Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="type-of-vaccination" placeholder="Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tr>
+            <th scope="row">1</th>
+            <td>Common Cold</td>
+            <td>RNA-Virus</td>
+            <td>Respiratory Passages</td>
+            <td>Droplets Infection</td>
+            <td>Intramuscular Injection</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>SmallPox</td>
+            <td>Variola Virus</td>
+            <td>Respiratory Passages, then skin</td>
+            <td>Droplets infection (Wounds in Skin)</td>
+            <td>Scratching Skin</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Mumps</td>
+            <td>Paramyxovirus (RNA-Virus)</td>
+            <td>Infection via blood, salivary glands</td>
+            <td>Droplets infection</td>
+            <td>Living attenuated Virus</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>AID's</td>
+            <td>Retrovirus</td>
+            <td>Skin Cancer</td>
+            <td>Sexual Intercourse</td>
+            <td>Not available</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Ebola</td>
+            <td>EVD</td>
+            <td>Fever</td>
+            <td>Wild animals to people, people to people</td>
+            <td>Ebola Vaccine</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Covid-19</td>
+            <td>SARS-CoV-2</td>
+            <td>Lungs</td>
+            <td>Droplets infections</td>
+            <td>Covid-19 vaccines such as Pfizer, AstraZenica, Moderna</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+    </tbody>
+</table>
+<br>
+<h1>Bacterial Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#farmModal">+ Add Disease</button>
+        </div>
+
+        <!--Farm Modal-->
+        <div class="modal fade" id="farmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('farmportal.addfarm')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="cause" placeholder="Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="parts-of-body-affected" placeholder="Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="method-of-spreading" placeholder="Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="type-of-vaccination" placeholder="Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tr>
+            <th scope="row">1</th>
+            <td>Diphtheria</td>
+            <td>Corynebacterium diphtheria</td>
+            <td>Upper respiratory tract</td>
+            <td>Droplet infection</td>
+            <td>Toxoid</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Tuberculosis</td>
+            <td>Mycobacterium tuberulosis</td>
+            <td>Upper respiratory tract, inducing violent coughing</td>
+            <td>Droplets infection</td>
+            <td>Antibiotics, Streptomycin</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Whooping cough (Pertussis)</td>
+            <td>Bordetella pertussis</td>
+            <td>Upper respiratory tract</td>
+            <td>Droplet infection</td>
+            <td>Killed bacteria</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Gonorrhoea</td>
+            <td>Neisseria gonorrhoeae</td>
+            <td>Reproductive organs</td>
+            <td>Contagion by sexual contact</td>
+            <td>Antibiotics, e.g. penicillin, streptomycin</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Tetanus</td>
+            <td>Clostridium tetani</td>
+            <td>Blood</td>
+            <td>Wound infection</td>
+            <td>Toxoid</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Tuberculosis</td>
+            <td>Mycobacterium tuberulosis</td>
+            <td>Upper respiratory tract, inducing violent coughing</td>
+            <td>Droplets infection</td>
+            <td>Antibiotics, Streptomycin</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+    </tbody>
+</table>
+<h1>Diseases Caused By Worms</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible and its habitat</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#farmModal">+ Add Disease</button>
+        </div>
+
+        <!--Farm Modal-->
+        <div class="modal fade" id="farmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('farmportal.addfarm')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="cause" placeholder="Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="parts-of-body-affected" placeholder="Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="method-of-spreading" placeholder="Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="type-of-vaccination" placeholder="Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tr>
+            <th scope="row">1</th>
+            <td>Hook-worm</td>
+            <td>Ancylostoma duobenale</td>
+            <td>Transmission from person to person and filariform larvae passed out in faeces</td>
+            <td>Dermatitis; reddish, severe anaemia; duodenal ulcer, constipation.</td>
+            <td>Anthelminthic medications</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Ascariasis</td>
+            <td>Ascaris Lumbricoides</td>
+            <td>Transmission from person to person</td>
+            <td>Larvae in lung cause pneumonia and typhoid-like fever</td>
+            <td>Anthelmintic medications</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Pinworm</td>
+            <td>Enterobius vermicularis, caecum and vermiform appendix</td>
+            <td>Transmission from one person to another by ingestion of eggs in contaminated food or drink.</td>
+            <td>Eczematous condition round the anus and bed wetting at night</td>
+            <td>mebendazole, pyrantel pamoate, or albendazole</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Filariasis</td>
+            <td>Wuchereria Bancrofti</td>
+            <td>Mosquito bite larvae deposited on skin</td>
+            <td>Elephantiasis</td>
+            <td>Diethylcarbamazine citrate (DEC)</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+    </tbody>
+</table>
+<br>
+<h1>Diseases caused by Fungi</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Ringworm</td>
+            <td>Microsporum and Trichophyton</td>
+            <td>Direct contact from unbathed cats and dogs or objects handled by infected individuals</td>
+            <td>Contain one or more blistered areas on skin and scalp</td>
+            <td>Clotrimazole (Lotrimin, Mycelex)</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Madura foot</td>
+            <td>Maurella Mycetomi</td>
+            <td>Fungi gain entry through some minor injury to the skin.</td>
+            <td>Produce a chronic, granulating infection of the lower extremities</td>
+            <td>The azole derivatives (itraconazole, ketoconazole, voriconazole, fluconazole and miconazole)</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Dhobie itch</td>
+            <td>Several Different Fungi</td>
+            <td>Direct contact through Objects handled by infected person.</td>
+            <td>A type of ringworm infection usually located in the groin and inner surfaces of thighs</td>
+            <td>antifungal cream, powder, or spray to the affected area</td>
+            <td><button type="button" class="btn btn-outline-success"><i class="fas fa-edit"></i></button></td>
+    </tbody>
+    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#farmModal">+ Add Disease</button>
+    </div>
+
+    <!--Farm Modal-->
+    <div class="modal fade" id="farmModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a Disease</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url_for('farmportal.addfarm')}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="disease-name" placeholder="Disease Name" required="required">
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" name="cause" placeholder="Cause" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="parts-of-body-affected" placeholder="Parts Of Body Affected" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="method-of-spreading" placeholder="Method Of Spreading" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="type-of-vaccination" placeholder="Type-Of-Vaccination" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</table>
+</body>
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../static/img/Logo.png" width="60" height="58">
+                <hr class="light">
+                <a href="login.html">
+                    <p>Blogs & Forums</p>
+                </a>
+                <a href="diseaseslist.html">
+                    <p>List of Diseases</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Social Media</h5>
+                <hr class="light">
+                <p>Facebook page</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Company</h5>
+                <hr class="light">
+                <a href="aboutus.html">
+                    <p>About Us</p>
+                </a>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>&copy; OHAS.com</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
