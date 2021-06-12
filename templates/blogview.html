@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin Disease Tables | OHAS</title>
+{% endblock %} {% block content %}
+
+<div class="header">
+    <h2>&nbsp;&nbsp;&nbsp;Blogs & Forums</h2>
+</div>
+
+{% for b in data %}
+<div class="row">
+    <div class="leftcolumn">
+        <div class="card">
+            <h2>{{b[1]}}</h2>
+            <h5>{{b[3]}}</h5>
+
+            <p>{{b[2]}}</p>
+        </div>
+
+    </div>
+
+</div>
+{% endfor %} {% endblock %}

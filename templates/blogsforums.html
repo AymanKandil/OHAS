@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin Disease Tables | OHAS</title>
+{% endblock %} {% block content %} {% for b in d %}
+<div class="row">
+    <div class="leftcolumn">
+        <div class="card">
+            <h2>{{b[1]}}</h2>
+            <div class="column">
+                <div class="column">
+                    <div class="carousel-item active">
+                        <img src="../static/img/Ebola.jpg">
+                        <div class="carousel-caption">
+                        </div>
+                        <p>{{b[3]}}</p>
+                    </div>
+                    <p>{{b[2]}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endfor %} {% endblock %}

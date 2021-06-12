@@ -1,0 +1,51 @@
+{% set nav = [{ "name": "Edit Disease tables", "href": url_for('diseasetable.admin_diseasetable_view'), "access_roles": [1] }, { "name": "Edit Disease tables", "href": url_for('diseasetable.admin_diseasetable_view'), "access_roles": [3] }, { "name": "Create/Edit
+Medical Forums", "href": url_for('medforums.admin_medforums_view'), "access_roles": [3] }, { "name": "Edit Medical Forums", "href": url_for('medforums.admin_medforums_view'), "access_roles": [1] }, { "name": "Admin Portal", "href": "/dashboard", "access_roles":
+[1] }, { "name": "User Portal", "href": url_for('userportal.userportal_dashboard_view'), "access_roles": [2]} ] %}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="../static/img/Logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('diseasetable.diseasetable_view') }}">List of Diseases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('medforums.medforums_view') }}">Blogs & Forums</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Sign-out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.doc_register') }}">Be a Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.user_register') }}">Be a Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">Sign-in</a>
+                </li>
+                {% endif%}
+                <ul class="navbar-nav ml-auto">
+                    {% for item in nav %} {% if current_user.allowed(item.access_roles) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{item.href}}">{{item.name}}</a>
+                    </li>
+                    {% endif %} {% endfor %}
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('aboutus') }}">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

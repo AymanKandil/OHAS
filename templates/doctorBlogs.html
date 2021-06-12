@@ -1,0 +1,120 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin Disease Tables | OHAS</title>
+{% endblock %} {% block content %}
+
+<h1>Blogs</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Blog Title</th>
+            <th scope="col">date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#blogModal">+ Add Blog</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editblogModal">Edit Blog</button>
+
+
+        <!--blog Modal-->
+        <div class="modal fade" id="blogModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Blog</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('medforums.addblog')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="blog-title" placeholder="Blog Title" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="blog-text" placeholder="Blog" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="date" placeholder="Date" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--edit blog Modal-->
+        <div class="modal fade" id="editblogModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modify a Blog</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('medforums.updateblog')}}" method="POST">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Blogs</label>
+                                    </div>
+                                    <select name="blog_id" class="custom-select" id="inputGroupSelect01">
+                                        
+                                        <option selected>Choose...</option>
+                                        {% for b in bdata %}
+                                      <option value="{{b[0]}}">{{b[0]}}</option>
+                                        {% endfor %}      
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="new-blog-title" placeholder="New Blog Title " required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-blog-text" placeholder="New Blog" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-date" placeholder="New Date" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% for b in bdata %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+
+            <td><a href="/medforums/{{b[0]}}">{{b[1]}}</a></td>
+
+            <td>{{b[3]}}</td>
+            <td>
+                <form action="{{url_for('medforums.deleteblog')}}" method="POST">
+                    <input type="hidden" name="blogID" value="{{ b[0] }}" />
+                    <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </td>
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}

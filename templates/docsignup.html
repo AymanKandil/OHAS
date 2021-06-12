@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}
+<title>Doctor Registration | OHAS</title>
+{% endblock %} {% block content %}
+<div class="signup-form">
+    <form enctype="multipart/form-data" method="POST" action="{{ url_for('auth.doc_register') }}" class="login-form">
+        <h2>Sign Up</h2>
+        <p class="hint-text text-center">Your Health Journey Starts Here!</p>
+        <div class="form-group">
+            <div class="row">
+                <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+                <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col"><input type="text" class="form-control" name="gender" placeholder="Gender" required="required"></div>
+                <div class="col"><input type="number" class="form-control" name="age" placeholder="Age" required="required"></div>
+            </div>
+            &nbsp;
+            <div class="row">
+                <label for="exampleFormControlTextarea3">Please List Your Previous Workplaces</label>
+                <textarea class="form-control" name="prev_work" id="exampleFormControlTextarea1" rows="7" required="required"></textarea>
+            </div>
+            <div class="row">
+                <label for="exampleFormControlTextarea3">Please provide your Medical Position</label>
+                <textarea class="form-control" name="med_pos" id="exampleFormControlTextarea1" rows="7" required="required"></textarea>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Please Attach Your Medical Certification</label>
+                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" required="required">
+                </div>
+            </form>
+    </form>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-light btn-lg btn-block">Register Now</button>
+    </div>
+    </form>
+    <div class="text-center">Already have an account? <a href="login.html">Sign in</a></div>
+    </div>
+</div>
+{% endblock %}

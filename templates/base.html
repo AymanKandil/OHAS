@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="../static/style.css"> {% block imports %} {% endblock %} {% block title %}
+    <title>{{ doctor[0] }} profile | OHAS</title>{% endblock %}
+</head>
+
+{% include 'nav.html' %}
+
+<body>
+    {% block content %} {% endblock %}
+</body>
+
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="../static/img/Logo-gray.png" width="60" height="58">
+                <hr class="light">
+                <a href="{{ url_for('medforums.medforums_view') }}">
+                    <p>Blogs & Forums</p>
+                </a>
+                <a href="{{ url_for('diseasetable.diseasetable_view') }}">
+                    <p>List of Diseases</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Social Media</h5>
+                <hr class="light">
+                <p>Facebook page</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Company</h5>
+                <hr class="light">
+                <a href="{{ url_for('aboutus') }}">
+                    <p>About Us</p>
+                </a>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>&copy; OHAS.com</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>

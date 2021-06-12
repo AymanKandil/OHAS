@@ -1,0 +1,131 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin portal - OHAS</title>
+{% endblock %} {% block imports %}
+<style>
+    .tables {
+        margin: 50px;
+    }
+    
+    .tables h2 {
+        color: #636363;
+        margin: 0 0 15px;
+        position: relative;
+        text-align: center;
+    }
+    
+    .tables h2:before,
+    .tables h2:after {
+        content: "";
+        height: 2px;
+        width: 35%;
+        background: #d4d4d4;
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+    }
+    
+    .tables h2:before {
+        left: 0;
+    }
+    
+    .tables h2:after {
+        right: 0;
+    }
+    
+    .tables button {
+        float: right;
+    }
+    
+    .tables .form-group {
+        float: left;
+    }
+    
+    .role-admin {
+        border-radius: 15px;
+        background: #ffba00;
+        padding: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+{% endblock %}
+</head>
+
+{% block content %}
+<!--Admin Title-->
+<div class="team container-fluid padding">
+    <div class="row text-center">
+        <div class="col-12">
+
+            <h1 class="display-4">Admin Portal</h1>
+            <p class="lead">Available Roles:</p>
+
+            <h4 class=>{% for role in access.keys() %}<span class="role-admin">{{ access[role]}}</span> {% endfor %}</h4>
+
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- Users table -->
+<div class="tables">
+
+    <h2>Users</h2>
+    <p class="hint-text text-center">Manage User Roles</p>
+    <table class="table-secondary col-6 offset-3">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Edit/Add Roles</th>
+                <th>Delete Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users.keys() %}
+            <tr class="table-light">
+                <td>
+                    <a href="/user/{{users[user].name}}"></a>{{ users[user].name}}</a>
+                </td>
+                <td><span class="role-admin">{{ access.get(users[user].role) }}</span>
+                </td>
+                <td>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Role</label>
+                        </div>
+                        <form method="POST" action="/dashboard/">
+                            <select class="custom-select" name="roleChange" id="roleChange">
+                                <option selected>Choose...</option>
+                                    {% for role in access.keys() %}
+                                    <option value="{{ role }}">{{ access[role] }}</option>
+                                    {% endfor %}
+                            </select>
+                    </div>
+                    <button formaction="/dashboard/role/{{ users[user].name }}/update" class="btn btn-outline-success float-left"> Change Role</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{url_for('dashboard.remove_user_post')}}" method=" POST">
+                        <input type="hidden" name="n" value="{{ users[user].name}}" />
+                        <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                    </form>
+
+                </td>
+
+                {% endfor %}
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+{% endblock %}

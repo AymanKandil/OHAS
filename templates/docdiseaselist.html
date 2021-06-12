@@ -1,0 +1,512 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin Disease Tables | OHAS</title>
+{% endblock %} {% block content %}
+<!-- Body -->
+<h1>Viral Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#vdModal">+ Add Disease</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editvdModal">Edit Disease</button>
+
+
+        <!--vd Modal-->
+        <div class="modal fade" id="vdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.add_disease_vd')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name-vd" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="cause-vd" placeholder="Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="parts-of-body-affected-vd" placeholder="Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="method-of-spreading-vd" placeholder="Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="type-of-vaccination-vd" placeholder="Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--edit vd Modal-->
+        <div class="modal fade" id="editvdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.update_disease_vd')}}" method="POST">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Diseases</label>
+                                    </div>
+                                    <select name="new-disease-name-vd" class="custom-select" id="inputGroupSelect01">
+                                        
+                                        <option selected>Choose...</option>
+                                        {% for vd in vd_data %}
+                                      <option value="{{vd[1]}}">{{vd[1]}}</option>
+                                        {% endfor %}      
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="new-cause-vd" placeholder="New Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-parts-of-body-affected-vd" placeholder="New Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-method-of-spreading-vd" placeholder="New Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-type-of-vaccination-vd" placeholder="New Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% for vd in vd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{vd[1]}}</td>
+            <td>{{vd[2]}}</td>
+            <td>{{vd[3]}}</td>
+            <td>{{vd[4]}}</td>
+            <td>{{vd[5]}}</td>
+            <td>
+                <form action="{{url_for('diseasetable.delete_disease_vd')}}" method="POST">
+                    <input type="hidden" name="vdnamefor" value="{{ vd[1]}}" />
+                    <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </td>
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+<br>
+<h1>Bacterial Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#bdModal">+ Add Disease</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editbdModal">Edit Disease</button>
+
+
+        <!--bd Modal-->
+        <div class="modal fade" id="bdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.add_disease_bd')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name-bd" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="cause-bd" placeholder="Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="parts-of-body-affected-bd" placeholder="Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="method-of-spreading-bd" placeholder="Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="type-of-vaccination-bd" placeholder="Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--edit bd Modal-->
+        <div class="modal fade" id="editbdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.update_disease_bd')}}" method="POST">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Diseases</label>
+                                    </div>
+                                    <select name="new-disease-name-bd" class="custom-select" id="inputGroupSelect01">
+                                      <option selected>Choose...</option>
+                                      {% for bd in bd_data %}
+                                      <option value="{{bd[1]}}">{{bd[1]}}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="new-cause-bd" placeholder="New Cause" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-parts-of-body-affected-bd" placeholder="New Parts Of Body Affected" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-method-of-spreading-bd" placeholder="New Method Of Spreading" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-type-of-vaccination-bd" placeholder="New Type-Of-Vaccination" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for bd in bd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{bd[1]}}</td>
+            <td>{{bd[2]}}</td>
+            <td>{{bd[3]}}</td>
+            <td>{{bd[4]}}</td>
+            <td>{{bd[5]}}</td>
+            <td>
+                <form action="{{url_for('diseasetable.delete_disease_bd')}}" method="POST">
+                    <input type="hidden" name="bdnamefor" value="{{ bd[1]}}" />
+                    <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </td>
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+<h1>Diseases Caused By Worms</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible and its habitat</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#wdModal">+ Add Disease</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editwdModal">Edit Disease</button>
+
+
+        <!--wd Modal-->
+        <div class="modal fade" id="wdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.add_disease_wd')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name-wd" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="Pathogen-wd" placeholder="Pathogen responsible and its habitat" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="mode-wd" placeholder="Mode of transmission" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="symptoms-wd" placeholder="Main symptoms" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="treatment-wd" placeholder="Treatment" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Edit wd Modal-->
+        <div class="modal fade" id="editwdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.update_disease_wd')}}" method="POST">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Diseases</label>
+                                    </div>
+                                    <select name="new-disease-name-wd" class="custom-select" id="inputGroupSelect01">
+                                        
+                                        <option selected>Choose...</option>
+                                        {% for wd in wd_data %}
+                                      <option value="{{wd[1]}}">{{wd[1]}}</option>
+                                        {% endfor %}      
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="new-Pathogen-wd" placeholder="New Pathogen responsible and its habitat" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-mode-wd" placeholder="New Mode of transmission" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-symptoms-wd" placeholder="New Main symptoms" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-treatment-wd" placeholder="New Treatment" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for wd in wd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{wd[1]}}</td>
+            <td>{{wd[2]}}</td>
+            <td>{{wd[3]}}</td>
+            <td>{{wd[4]}}</td>
+            <td>{{wd[5]}}</td>
+            <td>
+                <form action="{{url_for('diseasetable.delete_disease_wd')}}" method="POST">
+                    <input type="hidden" name="wdnamefor" value="{{ wd[1]}}" />
+                    <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </td>
+
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+    </tbody>
+</table>
+<br>
+<h1>Diseases caused by Fungi</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for fd in fd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{fd[1]}}</td>
+            <td>{{fd[2]}}</td>
+            <td>{{fd[3]}}</td>
+            <td>{{fd[4]}}</td>
+            <td>{{fd[5]}}</td>
+            <td>
+                <form action="{{url_for('diseasetable.delete_disease_fd')}}" method="POST">
+                    <input type="hidden" name="fdnamefor" value="{{ fd[1]}}" />
+                    <button type="submit" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </td>
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#fdModal">+ Add Disease</button>
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editfdModal">Edit Disease</button>
+
+
+        <!--fd Modal-->
+        <div class="modal fade" id="fdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.add_disease_fd')}}" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="disease-name-fd" placeholder="Disease Name" required="required">
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="Pathogen-fd" placeholder="Pathogen responsible" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="mode-fd" placeholder="Mode of transmission" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="symptoms-fd" placeholder="Main symptoms" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="treatment-fd" placeholder="Treatment" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--edit fd Modal-->
+        <div class="modal fade" id="editfdModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a Disease</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url_for('diseasetable.update_disease_fd')}}" method="POST">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Diseases</label>
+                                    </div>
+                                    <select name="new-disease-name-fd" class="custom-select" id="inputGroupSelect01">
+                                  <option selected>Choose...</option>
+                                  {% for fd in fd_data %}
+                                  <option value="{{fd[1]}}">{{fd[1]}}</option>
+                                  {% endfor %}        
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" class="form-control" name="new-Pathogen-fd" placeholder="New Pathogen responsible" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-mode-fd" placeholder="New Mode of transmission" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-symptoms-fd" placeholder="New Main symptoms" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new-treatment-fd" placeholder="New Treatment" required="required">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-outline-danger offset-2" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success offset-3">Save changes</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</table>
+{% endblock %}

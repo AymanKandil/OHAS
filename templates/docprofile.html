@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>{{ doctor[0] }} profile | OHAS</title>
+{% endblock %}
+
+{% block content %}
+    <div id="user-container">
+        <div id="user-image">{{ initials }}</div>
+        <div id="user-info">
+            <div id="user-name">
+                <h4>{{ doctor[1] }} {{ doctor[2] }}</h4>
+                <h3>Doctor</h3>
+           </div>
+           <div class="user-info-row">
+               <div class="user-info-title">Age</div>
+               <div class="user-info-value">{{ doctor[5] }}</div>
+           </div>
+            <div class="user-info-row">
+               <div class="user-info-title">Gender</div>
+               <div class="user-info-value">{{ doctor[4] }}</div>
+           </div>
+           <div class="user-info-row">
+               <div class="user-info-title">Work experience</div>
+               <div class="user-info-value">{{ doctor[7] }}</div>
+           </div>
+            <div class="user-info-row">
+               <div class="user-info-title">Medical certification</div>
+               <div class="user-info-value"><a href="{{ doctor[8] }}">File</a></div>
+           </div>
+ 
+       </div>
+   </div>
+{% endblock %}

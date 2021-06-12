@@ -1,0 +1,127 @@
+{% extends "base.html" %} {% block title %}
+<title>Admin Disease Tables | OHAS</title>
+{% endblock %} {% block content %}
+
+<h1>Viral Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for vd in vd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{vd[1]}}</td>
+            <td>{{vd[2]}}</td>
+            <td>{{vd[3]}}</td>
+            <td>{{vd[4]}}</td>
+            <td>{{vd[5]}}</td>
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+<br>
+<h1>Bacterial Diseases of Humans</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Cause</th>
+            <th scope="col">Parts of Body Affected</th>
+            <th scope="col">Method of spreading</th>
+            <th scope="col">Type of Vaccination</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for bd in bd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{bd[1]}}</td>
+            <td>{{bd[2]}}</td>
+            <td>{{bd[3]}}</td>
+            <td>{{bd[4]}}</td>
+            <td>{{bd[5]}}</td>
+
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+<h1>Diseases Caused By Worms</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible and its habitat</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for wd in wd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{wd[1]}}</td>
+            <td>{{wd[2]}}</td>
+            <td>{{wd[3]}}</td>
+            <td>{{wd[4]}}</td>
+            <td>{{wd[5]}}</td>
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+<br>
+<h1>Diseases caused by Fungi</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Diseases</th>
+            <th scope="col">Pathogen responsible</th>
+            <th scope="col">Mode of transmission</th>
+            <th scope="col">Main symptoms</th>
+            <th scope="col">Treatment</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fd in fd_data %} {%set count = 1 %} {% set outer_loop = loop %}
+        <tr>
+
+            <th scope="row">{{ outer_loop.index }}</th>
+            <td>{{fd[1]}}</td>
+            <td>{{fd[2]}}</td>
+            <td>{{fd[3]}}</td>
+            <td>{{fd[4]}}</td>
+            <td>{{fd[5]}}</td>
+
+
+        </tr>
+        {%set count = count +1 %} {% endfor %}
+
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
